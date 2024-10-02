@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop thời trang </title>
+    <link rel="stylesheet" href="Men.css">
+</head>
+<body>
+    <!-- Trang Chủ -->
+    <header>
+        
+        <nav>
+             <ul>
+                <li><a href="#home">Trang Chủ</a></li>
+                <li><a href="#products" class="nam" >Thời Trang Nam</a></li>
+                <li><a href="#products">Thời Trang Nữ</a></li>
+                <li><a href="#news">Tin Tức</a></li>
+                <li><input type="text"  class="search" placeholder="Tìm kiếm..." oninput="searchProducts()"></li>
+            </ul>
+        </nav>
+        </header>
+                <h1>Thời Trang Nam </h1>
+    
+        <!-- Phần Sản Phẩm -->
+        <section id="array">
+            <h2>Sản Phẩm</h2>
+            <div id="product-list" class="products"></div>
+        </section>
+    
+        <script>
+            var array = [
+        {
+            img:"https://product.hstatic.net/1000253775/product/160_short_4m-1_afdf447f147d407e9c091f3f8ea11795_1024x1024.jpg",
+            name: "The Cosmo (Đen) Quần shot khaki",
+            price: "250.000 VND",
+        },
+        {
+            img:"https://dony.vn/wp-content/uploads/2021/09/quan-baggy-nam-2.jpg",
+            name: "Quần Baggy đen sang trọng QQ",
+            price: "398.000 VND",
+        },
+        {
+            
+            img:"https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lt3swxbnlo78b9",
+            name: "The Cosmo (Đen) Quần shot khaki",
+            price: "300.000 VND",
+        },
+        {
+            img:"https://down-vn.img.susercontent.com/file/vn-11134201-7ras8-m0kfse9gtxbh43",
+            name: "The Cosmo (Đen) Quần shot khaki",
+            price: "300.000 VND",
+        }
+    ];
+    function displayProducts(filteredArray) {
+            var productList = document.getElementById("product-list");
+            productList.innerHTML = ''; // Xóa danh sách hiện tại
+
+            (filteredArray || array).forEach(product => {
+                var productDiv = document.createElement("div");
+                productDiv.className = "product";
+                productDiv.innerHTML = `
+                    <img src="${product.img}" alt="${product.name}" />
+                    <h3>${product.name} - ${product.code}</h3>
+                    <p class="pri">Giá: ${product.price}</p>
+                    <button onclick="addToCart('${product.name}')">Đặt Mua</button>
+                `;
+                productList.appendChild(productDiv);
+            });
+        }
+
+        function searchProducts() {
+            var searchInput = document.querySelector('.search').value.toLowerCase();
+            var filteredArray = array.filter(product => product.name.toLowerCase().includes(searchInput));
+            displayProducts(filteredArray);
+        }
+
+        function addToCart(productName) {
+            alert(productName + " đã được thêm vào giỏ hàng!");
+        }
+
+        // Gọi hàm để hiển thị sản phẩm khi trang được tải
+        window.onload = () => displayProducts();
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cửa Hàng Thời Trang</title>
+    <link rel="stylesheet" href="Women.css">
+</head>
+<body>
+    <!-- Trang Chủ -->
+    <header>
+        
+    <nav>
+         <ul>
+            <li><a href="#home">Trang Chủ</a></li>
+            <li><a href="#products" >Thời Trang Nam</a></li>
+            <li><a href="#products" class="nu" >Thời Trang Nữ</a></li>
+            <li><a href="#news">Tin Tức</a></li>
+            <li><input type="text"  class="search" placeholder="Tìm kiếm..." oninput="searchProducts()"></li>
+        </ul>
+    </nav>
+    </header>
+            <h1>Thời Trang Nữ </h1>
+
+    <!-- Phần Sản Phẩm -->
+    <section id="array">
+        <h2>Sản Phẩm</h2>
+        <div id="product-list" class="products"></div>
+    </section>
+
+    <script>
+        var array = [
+    {
+        img:"https://nd-res1.tichluy.vn/Upload/Deals/268/26848_quan-jean-nu-cap-chun-2-khuy-dang-rong-co-gian-4-chieu-v195-lisa-du-size-tu-40kg-75kg_637864931042035820.jpg",
+        name: "Quần Jean Nữ",
+        code: "KO0002",
+        price: "370.000 VND",
+        discount: "269.000 VND",
+    },
+    {
+        img:"https://zizoou.com/cdn/shop/products/Ao-khoac-jacket-form-rong-oversize-7-6-Ao-khoac-trang-be-ZiZoou-Store_de69df3e-1358-47b4-a3cf-6ed5a99b7782.jpg?v=1677890431&width=1346",
+        name: "Áo Khoác Nữ",
+        code: "VN0002",
+        price: "369.000 VND",
+        discount: "249.000 VND",
+    },
+    {
+        img:"https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lji662gbfr903e",
+        name: "Áo Phông Nữ",
+        code: "US0002",
+        price: "390.000 VND",
+        discount: "159.000 VND",
+    }
+];
+function displayProducts(filteredArray) {
+            var productList = document.getElementById("product-list");
+            productList.innerHTML = ''; // Xóa danh sách hiện tại
+
+            (filteredArray || array).forEach(product => {
+                var productDiv = document.createElement("div");
+                productDiv.className = "product";
+                productDiv.innerHTML = `
+                    <img src="${product.img}" alt="${product.name}" />
+                    <h3>${product.name} - ${product.code}</h3>
+                    <p class="pri">Giá: ${product.price}</p>
+                    <p class="dis">Giảm giá: ${product.discount}</p>
+                    <button onclick="addToCart('${product.name}')">Đặt Mua</button>
+                `;
+                productList.appendChild(productDiv);
+            });
+        }
+
+        function searchProducts() {
+            var searchInput = document.querySelector('.search').value.toLowerCase();
+            var filteredArray = array.filter(product => product.name.toLowerCase().includes(searchInput));
+            displayProducts(filteredArray);
+        }
+
+        function addToCart(productName) {
+            alert(productName + " đã được thêm vào giỏ hàng!");
+        }
+
+        // Gọi hàm để hiển thị sản phẩm khi trang được tải
+        window.onload = () => displayProducts();
+    </script>
+</body>
+</html>

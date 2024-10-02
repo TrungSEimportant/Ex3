@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1px 0;
+    text-align: center;
+}
+h1{
+    color: #333;
+    text-align: center;
+    font-family: Verdana;
+}
+h2{
+    text-align: center;
+    margin: 2px ;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.products {
+    display: flex;
+    justify-content: space-between; /* Chia đều khoảng cách giữa các thẻ */
+    flex-wrap: wrap; /* Cho phép xuống dòng nếu không đủ chỗ */
+    margin: 20px;
+}
+
+.product {
+    display: grid;
+    grid-template-columns: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 23%; /* Để chia đều 4 thẻ trong một dòng (bao gồm khoảng cách margin giữa các thẻ) */
+    margin: 10px 0; /* Khoảng cách giữa các thẻ dọc */
+    text-align: center;
+    box-sizing: border-box; /* Đảm bảo padding và border không ảnh hưởng đến kích thước thẻ */
+}
+
+
+.product img {
+    max-width: 100%;
+}
+img{
+    padding: 1px 0;
+    max-height: 100%;
+    max-width: auto;
+
+}
+
+input{
+    font-size: 20px;
+    max-width: 100%;
+    font-family: Arial;
+    margin: 5px 0;
+    border-radius:2px solid black; 
+    border-style: hidden;
+}
+button{
+    font-size: 20px;
+    padding: 5px 0;
+    margin: 0;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 3px;
+}
+.nam{
+    text-align: center;
+    border-bottom: 2px solid #ccc; 
+    display: inline-block; /* Để gạch ngang không kéo dài toàn bộ màn hình */
+    padding-bottom: 10px; /* Tạo khoảng cách giữa tiêu đề và dấu gạch */
+    margin-bottom: 20px; /* Khoảng cách giữa h1 và các phần tử tiếp theo */
+}
+.pri{
+    font-weight: bold;
+}
